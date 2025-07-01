@@ -1,7 +1,10 @@
+# utilizzato in analisi
 percorso_csv_valerio = "C:/Users/valer/Documents/Progammazione/Python/Lettore_turno/dati/turni_csv/turni_valerio.csv"
 percorso_csv_sirya   = "C:/Users/valer/Documents/Progammazione/Python/Lettore_turno/dati/turni_csv/turni_sirya.csv"
 percorso_csv_uniti = "C:/Users/valer/Documents/Progammazione/Python/Lettore_turno/dati/turni_csv/turni_uniti.csv"
 LOGIN_URL = "https://www.webcrew.trenitalia.it/mbweb/main/trenitalia/desktop/main-menu"
+# config.py per github
+PER_CSV = "https://raw.githubusercontent.com/fracchil/turni-valerio-sirya/main/dati/turni_uniti.csv"
 
 UTENTI = {
     "valerio": {

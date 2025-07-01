@@ -1,6 +1,18 @@
 import streamlit as st
 import pandas as pd
 from config import percorso_csv_uniti
+import streamlit as st
+import pandas as pd
+from config import PER_CSV
+
+@st.cache_data
+def carica_turni():
+    return pd.read_csv(PER_CSV, parse_dates=["Data"])
+
+df = carica_turni()
+st.title("🗓️ Turni aggiornati")
+st.dataframe(df)
+
 
 st.set_page_config(
     page_title="Turni Condivisi",
