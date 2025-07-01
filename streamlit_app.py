@@ -15,37 +15,39 @@ def css_mobile():
     <style>
         html, body, [class*="css"] {
             font-family: 'Segoe UI', sans-serif;
-            background-color: #f6f6f6;
-            color: #333333;
+            background-color: #f2f2f2;
+            color: #111111;
         }
         .turno-card {
-            background: white;
+            background: #ffffff;
             border-left: 5px solid #3498db;
             padding: 1em;
             border-radius: 8px;
             margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
         }
         .turno-card h4 {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 1.25em;
+            color: #000000;
         }
         .turno-card p {
-            margin: 5px 0 0 0;
-            font-size: 0.95em;
-        }
-        @media screen and (max-width: 768px) {
-            .turno-card {
-                font-size: 0.95em;
-            }
+            margin: 6px 0 0 0;
+            font-size: 0.96em;
+            color: #333333;
         }
         .legend-box {
-            background-color: #ffffffdd;
-            padding: 1em;
-            border-left: 6px solid #e67e22;
+            background-color: #ffffffcc;
+            padding: 1.2em;
+            border-left: 5px solid #e67e22;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-top: 30px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            color: #111111;
+        }
+        @media screen and (max-width: 768px) {
+            .turno-card { font-size: 1em; }
+            .legend-box { font-size: 0.95em; }
+            body { font-size: 16px !important; }
         }
     </style>
     """, unsafe_allow_html=True)
