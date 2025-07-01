@@ -1,71 +1,61 @@
 import streamlit as st
 import pandas as pd
 from config import PER_CSV
+from io import StringIO
 
-# Inject CSS per layout responsive e colori più leggibili
-def inject_css():
+# ▶️ Configurazione pagina
+st.set_page_config(
+    page_title="Turni Valerio & Sirya",
+    layout="wide"
+)
+
+# ▶️ Stile CSS: mobile-friendly + export layout
+def css_mobile():
     st.markdown("""
     <style>
         html, body, [class*="css"] {
             font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f6f8;
-            color: #2c3e50;
+            background-color: #f6f6f6;
+            color: #333333;
         }
-
-        .title-center {
-            text-align: center;
-            font-size: 2.3em;
-            font-weight: 700;
-            margin-top: 20px;
-            color: #1a1a1a;
-        }
-
-        .legend-box {
-            background: #ffffffcc;
-            padding: 1.2em;
-            border-left: 5px solid #f39c12;
+        .turno-card {
+            background: white;
+            border-left: 5px solid #3498db;
+            padding: 1em;
             border-radius: 8px;
-            margin-top: 30px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-
-        .pdf-button {
-            background-color: #2ecc71;
-            color: white;
-            padding: 0.6em 1.2em;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 16px;
+        .turno-card h4 {
+            margin: 0;
+            font-size: 1.2em;
         }
-
+        .turno-card p {
+            margin: 5px 0 0 0;
+            font-size: 0.95em;
+        }
         @media screen and (max-width: 768px) {
-            .title-center {
-                font-size: 1.8em;
-            }
-
-            .legend-box {
+            .turno-card {
                 font-size: 0.95em;
             }
-
-            table {
-                font-size: 14px;
-            }
+        }
+        .legend-box {
+            background-color: #ffffffdd;
+            padding: 1em;
+            border-left: 6px solid #e67e22;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-top: 30px;
         }
     </style>
     """, unsafe_allow_html=True)
 
-# Config pagina
-st.set_page_config(
-    page_title="Turni Condivisi",
-    layout="wide"
-)
+css_mobile()
 
-inject_css()
+# ▶️ Titolo
+st.markdown("<h1 style='text-align:center;'>📅 Turni Valerio & Sirya ❤️</h1>", unsafe_allow_html=True)
 
-# Titolo principale
-st.markdown('<div class="title-center">📅 Turni Valerio & Sirya ❤️</div>', unsafe_allow_html=True)
-
-# Caricamento dati
+# ▶️ Caricamento dati
 @st.cache_data
 def carica_turni():
     df = pd.read_csv(PER_CSV, parse_dates=["Data"])
@@ -76,24 +66,62 @@ def carica_turni():
 
 df = carica_turni()
 
-# Tabella principale
-st.dataframe(df, use_container_width=True)
+# ▶️ Esportazione HTML (per PDF)
+def export_html(df):
+    html = f"""
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <style>
+        body {{ font-family: Segoe UI, sans-serif; margin: 2em; color: #222; }}
+        h2 {{ text-align: center; }}
+        table {{
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }}
+        th, td {{
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-size: 14px;
+        }}
+        th {{
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }}
+    </style>
+    </head>
+    <body>
+        <h2>📄 Turni aggiornati — Valerio & Sirya</h2>
+        {df.to_html(index=False)}
+    </body>
+    </html>
+    """
+    return html.encode("utf-8")
 
-# Esportazione dati
+html_bytes = export_html(df)
 st.download_button(
-    label="📥 Scarica dati (CSV)",
-    data=df.to_csv(index=False).encode("utf-8"),
-    file_name="turni_valerio_sirya.csv",
-    mime="text/csv"
+    label="📤 Esporta versione PDF-friendly (HTML)",
+    data=html_bytes,
+    file_name="turni_valerio_sirya.html",
+    mime="text/html"
 )
 
-# Se vuoi anche una stampa PDF visiva:
-html_export = df.to_html(index=False)
-st.markdown("Puoi convertire questo contenuto in PDF tramite 'Stampa → Salva come PDF' dal browser.")
+# ▶️ Visualizzazione mobile-friendly → CARD PER RIGA
+st.subheader("📋 Elenco turni")
 
-# Legenda
+for _, row in df.iterrows():
+    st.markdown(f"""
+    <div class="turno-card">
+        <h4>📆 {row["Data"]}</h4>
+        <p><strong>🧍 {row.get("Nome", "—")}</strong></p>
+        <p>⏰ Fascia: <em>{row["Fascia Libera Sintetica"]}</em></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ▶️ Legenda finale
 st.markdown('<div class="legend-box">', unsafe_allow_html=True)
-st.markdown("**Legenda Fascia Libera Sintetica:**")
+st.markdown("**Legenda Fascia Libera Sintetica**")
 st.markdown("""
 - ⚡ Matteriggio libero  
 - 🔥 Pomesera libero  
