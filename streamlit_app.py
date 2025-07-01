@@ -24,7 +24,7 @@ st.title("📅 Turni Valerio & Sirya ❤️")
 
 @st.cache_data
 def carica_turni():
-    df = pd.read_csv(percorso_csv_uniti, parse_dates=["Data"])
+    df = pd.read_csv(PER_CSV, parse_dates=["Data"])
     df["Giorno"] = df["Giorno"].astype(str)
     df["Fascia Libera Sintetica"] = df["Fascia Libera Sintetica"].astype(str)
     return df
