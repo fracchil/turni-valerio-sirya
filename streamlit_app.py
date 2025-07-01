@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from config import percorso_csv_uniti
 import streamlit as st
 import pandas as pd
 from config import PER_CSV
