@@ -20,6 +20,16 @@ def main():
 
         unisci_turni_e_salva()
 
+        # fine di main.py, dopo unisci_turni_e_salva()
+        import subprocess, os
+
+        # path relativo al repo Git
+        CSV_PATH = "dati/turni_uniti.csv"
+        os.chdir(os.path.dirname(__file__))  # assicurati di stare nella root del repo
+        subprocess.run(["git", "add", CSV_PATH])
+        subprocess.run(["git", "commit", "-m", "🗓️ Aggiornamento turni"])
+        subprocess.run(["git", "push"])
+
     elif scelta == "2":
         unisci_turni_e_salva()
 
