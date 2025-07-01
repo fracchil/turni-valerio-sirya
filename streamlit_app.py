@@ -11,7 +11,7 @@ def css_mobile():
     <style>
         html, body, [class*="css"] {
             font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f6f8;
+            background-color: #f9f9f9;
             color: #111111;
         }
 
@@ -21,28 +21,28 @@ def css_mobile():
             padding: 1em;
             border-radius: 8px;
             margin-bottom: 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
         }
 
         .turno-card h4 {
             margin: 0 0 6px 0;
             font-size: 1.2em;
-            color: #2c3e50;
+            color: #000000;
         }
 
         .turno-card p {
             margin: 4px 0;
             font-size: 0.95em;
+            color: #333333;
         }
 
         .legend-box {
-            background-color: #ffffffee;
+            background-color: #ffffff;
             padding: 1.2em;
             border-left: 6px solid #e67e22;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
             color: #111111;
-            margin-top: 30px;
         }
 
         @media screen and (max-width: 768px) {
