@@ -18,8 +18,8 @@ def aggiorna_git():
         print(f" - {f}")
     # Chiedi il messaggio di commit
     commit_msg = input("Scrivi il messaggio per il commit: ")
-    # Aggiungi e fai commit
-    subprocess.run(["git", "add"] + changed_files)
+    # Aggiungi tutte le modifiche (inclusi file eliminati e nuovi)
+    subprocess.run(["git", "add", "-A"])
     subprocess.run(["git", "commit", "-m", commit_msg])
     subprocess.run(["git", "push"])
     print("✅ Aggiornamento completato!")
