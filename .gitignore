@@ -9,7 +9,7 @@ env/
 .env/
 
 #script avvio da desktop
-Python/Lettore_turno/avvia_turni.bat
+avvia_turni.bat
 
 # 📄 Dati generati automaticamente
 dati/raw_html/*.html
