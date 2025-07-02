@@ -119,6 +119,7 @@ for _, row in df.iterrows():
 st.markdown('<div class="legend-box">', unsafe_allow_html=True)
 st.markdown("**Legenda Fascia Libera Sintetica**")
 st.markdown("""
+- 🌞 Giornata piena disponibile  
 - ⚡ Matteriggio libero  
 - 🔥 Pomesera libero  
 - 🕗 Mattina + 🌇 Sera  
