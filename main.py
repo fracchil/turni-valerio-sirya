@@ -24,5 +24,11 @@ def main():
     subprocess.run(["git", "commit", "-m", "🗓️ Aggiornamento turni"])
     subprocess.run(["git", "push"])
 
+    # Chiedi se aprire l'app Web
+    apri = input("Vuoi aprire l'app Web? [1/2]: ")
+    if apri.strip().lower() == "1":
+        import webbrowser
+        webbrowser.open("https://turni-valerio-sirya.streamlit.app/")
+
 if __name__ == "__main__":
     main()
