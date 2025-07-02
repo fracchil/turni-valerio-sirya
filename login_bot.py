@@ -1,12 +1,23 @@
+from pywinauto.application import Application
+import pywinauto.keyboard as keyboard
 import pyautogui
 import time
 import os
 import pyperclip
+import pygetwindow as gw
 
 def accedi_e_salva_html(username, password, output_path):
     print(f"🚀 Login per {username}...")
     os.startfile("chrome.exe")
-    time.sleep(3)
+    time.sleep(3)  # aspetta che Chrome si apra
+
+    for w in gw.getWindowsWithTitle("Chrome"):
+        try:
+            w.maximize()
+            print("🪟 Finestra Chrome massimizzata!")
+            break
+        except:
+            print("⚠️ Impossibile massimizzare finestra.")
 
     LOGIN_URL = "https://www.webcrew.trenitalia.it/mbweb/main/trenitalia/desktop/main-menu"
     pyperclip.copy(LOGIN_URL)
@@ -31,7 +42,7 @@ def accedi_e_salva_html(username, password, output_path):
     pyautogui.hotkey("ctrl", "c")
     time.sleep(0.5)
     pyautogui.press("f12")
-    time.sleep(0.5)
+    time.sleep(1)
 
     html = pyperclip.paste()
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
