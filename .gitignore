@@ -1,6 +1,17 @@
-venv/
+# 🔥 File compilati Python
 __pycache__/
 *.pyc
 
-__pycache__/
-*.pyc
+# 🧪 Ambienti virtuali
+venv/
+env/
+.venv/
+.env/
+
+# 📄 Dati generati automaticamente
+dati/raw_html/*.html
+
+# 🛠️ Config temporanei editor
+*.vscode/
+*.idea/
+*.DS_Store
