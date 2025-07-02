@@ -16,9 +16,11 @@ def aggiorna_git():
     print("File da aggiornare:")
     for f in changed_files:
         print(f" - {f}")
+    # Chiedi il messaggio di commit
+    commit_msg = input("Scrivi il messaggio per il commit: ")
     # Aggiungi e fai commit
     subprocess.run(["git", "add"] + changed_files)
-    subprocess.run(["git", "commit", "-m", "Aggiornamento automatico file modificati"])
+    subprocess.run(["git", "commit", "-m", commit_msg])
     subprocess.run(["git", "push"])
     print("✅ Aggiornamento completato!")
 
