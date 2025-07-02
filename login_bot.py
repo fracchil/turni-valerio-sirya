@@ -9,7 +9,7 @@ import pygetwindow as gw
 def accedi_e_salva_html(username, password, output_path):
     print(f"🚀 Login per {username}...")
     os.startfile("chrome.exe")
-    time.sleep(3)  # aspetta che Chrome si apra
+    time.sleep(2)  # aspetta che Chrome si apra
 
     for w in gw.getWindowsWithTitle("Chrome"):
         try:
@@ -23,7 +23,7 @@ def accedi_e_salva_html(username, password, output_path):
     pyperclip.copy(LOGIN_URL)
     pyautogui.hotkey("ctrl", "v")
     pyautogui.press("enter")
-    time.sleep(2.5)
+    time.sleep(2)
 
     pyautogui.write(username)
     pyautogui.press("tab")
