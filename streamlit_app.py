@@ -4,20 +4,6 @@ import pandas as pd
 from config import PER_CSV
 import os
 
-# Percorso commenti locale
-COMMENTI_PATH = os.path.join("dati", "commenti.csv")
-
-def carica_commenti():
-    if os.path.exists(COMMENTI_PATH):
-        df = pd.read_csv(COMMENTI_PATH)
-        return dict(zip(df["Data"], df["Commento"]))
-    return {}
-
-def salva_commento(data, testo):
-    commenti = carica_commenti()
-    commenti[data] = testo
-    df = pd.DataFrame(list(commenti.items()), columns=["Data", "Commento"])
-    df.to_csv(COMMENTI_PATH, index=False)
 
 # ▶️ Impostazioni pagina
 st.set_page_config(page_title="Turni Valerio & Sirya", layout="wide")
@@ -118,29 +104,19 @@ st.download_button(
 st.subheader("📋 Elenco Turni Giornalieri")
 
 
-commenti = carica_commenti()
-
 for _, row in df.iterrows():
     fascia = row["Fascia Libera Sintetica"]
     fascia_comune = row["Fascia Libera Comune"]
-    data = row["Data"]
     fascia_comune_str = f"<p>🤝 <strong>Fascia Libera Comune:</strong> {fascia_comune}</p>" if pd.notna(fascia_comune) and fascia_comune.strip() else ""
-    commento = commenti.get(data, "")
-    with st.form(f"commento_{data}"):
-        st.markdown(f"""
-        <div class="turno-card">
-            <h4>🗓️ {row['Giorno']} {row['Data']}</h4>
-            <p>👨 <strong>Valerio:</strong> {row['Turno Valerio']}</p>
-            <p>👩‍⚕️ <strong>Sirya:</strong> {row['Turno Sirya']}</p>
-            {fascia_comune_str}
-            <p>🔖 <strong>Fascia sintetica:</strong> {fascia}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        nuovo_commento = st.text_input("Commento (visibile a entrambi)", value=commento, key=f"input_{data}")
-        submitted = st.form_submit_button("Salva commento")
-        if submitted:
-            salva_commento(data, nuovo_commento)
-            st.success("Commento salvato!")
+    st.markdown(f"""
+    <div class="turno-card">
+        <h4>🗓️ {row['Giorno']} {row['Data']}</h4>
+        <p>👨 <strong>Valerio:</strong> {row['Turno Valerio']}</p>
+        <p>👩‍⚕️ <strong>Sirya:</strong> {row['Turno Sirya']}</p>
+        {fascia_comune_str}
+        <p>🔖 <strong>Fascia sintetica:</strong> {fascia}</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ▶️ Legenda
 st.markdown('<div class="legend-box">', unsafe_allow_html=True)
