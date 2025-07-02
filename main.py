@@ -1,7 +1,7 @@
 from config import UTENTI
-from login_bot import accedi_e_salva_html
-from parser import estrai_e_salva_turni_csv
-from analisi_turni import unisci_turni_e_salva
+from moduli.login_bot import accedi_e_salva_html
+from moduli.parser import estrai_e_salva_turni_csv
+from moduli.analisi_turni import unisci_turni_e_salva
 import time
 
 def main():
