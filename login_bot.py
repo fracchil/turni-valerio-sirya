@@ -59,5 +59,6 @@ def accedi_e_salva_html(username, password, output_path):
         print("🔓 Logout effettuato")
         pyautogui.press("enter")
         time.sleep(1)
+        pyautogui.hotkey("ctrl", "w")
     else:
         print("⚠️ Logout non trovato a schermo")
