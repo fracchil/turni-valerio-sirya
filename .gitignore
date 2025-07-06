@@ -1,3 +1,5 @@
+# Ignora la cartella delle immagini di automazione
+moduli/img/
 # Ignora i CSV dei singoli utenti
 !dati/turni_csv/turni_uniti.csv
 dati/turni_csv/turni_*.csv

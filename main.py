@@ -10,7 +10,7 @@ def main():
         print(f"\n🔐 Accesso per {nome}")
         accedi_e_salva_html(dati["username"], dati["password"], dati["html_path"])
         estrai_e_salva_turni_csv(dati["html_path"], dati["csv_path"])
-        time.sleep(5)
+        time.sleep(1)  # attesa tra accessi
 
     unisci_turni_e_salva()
 
