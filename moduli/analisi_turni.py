@@ -32,7 +32,8 @@ def crea_mappa_turni_e_testo(df):
     mappa, testo = {}, {}
     for _, r in df.iterrows():
         d0 = r["Data"].date()
-        tipo = str(r.get("Tipo", "")).strip().lower()
+        tipo_raw = str(r.get("Tipo", "")).strip()
+        tipo = tipo_raw.lower()
         s0, _ = parse_ora(r.get("Ora Inizio"), r["Data"])
         e0, plus = parse_ora(r.get("Ora Fine"), r["Data"], inizio_ref=s0)
 
@@ -51,18 +52,28 @@ def crea_mappa_turni_e_testo(df):
                 testo[d1] = (testo.get(d1,"") + "; " if testo.get(d1) else "") + seg
             continue
 
-        if tipo.startswith("riposo") or tipo.startswith("intervallo") or tipo in ("n/d","libero"):
+        # Giorni "speciali" che devono essere considerati non calcolabili ma mostrati
+        if (
+            tipo.startswith("riposo") or tipo.startswith("intervallo") or tipo in ("libero",)
+        ):
             mappa.setdefault(d0, [])
-            testo.setdefault(d0, r["Tipo"])
+            testo.setdefault(d0, tipo_raw)
             continue
 
-        if "in modifica" in tipo or "disp" in tipo:
+        if (
+            "corso" in tipo or "in modifica" in tipo or "modifica" in tipo or "disp" in tipo
+        ):
             mappa[d0] = None
-            testo.setdefault(d0, r["Tipo"])
+            testo.setdefault(d0, tipo_raw)
             continue
 
-        mappa[d0] = None
-        testo.setdefault(d0, r["Tipo"] or "N/D")
+        # Se il campo è vuoto o "N/D" (ma non altro testo), mostra N/D
+        if not tipo_raw or tipo == "n/d":
+            mappa[d0] = None
+            testo.setdefault(d0, "N/D")
+        else:
+            mappa[d0] = None
+            testo.setdefault(d0, tipo_raw)
 
     return mappa, testo
 

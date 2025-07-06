@@ -48,3 +48,15 @@ def estrai_e_salva_turni_csv(input_path, output_path):
             "Ora Fine": ora_fine.text.strip() if ora_fine else "",
             "Luogo Fine": luogo_fine.text.strip() if luogo_fine else ""
         })
+
+    # Scrivi i dati estratti in un file CSV
+    if dati_turni:
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, "w", encoding="utf-8", newline="") as csvfile:
+            fieldnames = ["Data", "Tipo", "Turno", "Ora Inizio", "Luogo Inizio", "Ora Fine", "Luogo Fine"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(dati_turni)
+        print(f"✅ CSV aggiornato: {output_path}")
+    else:
+        print(f"⚠️ Nessun turno trovato in {input_path}, nessun CSV aggiornato.")
