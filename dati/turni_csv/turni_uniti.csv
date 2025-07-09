@@ -1,13 +1,6 @@
 Data,Giorno,Turno Valerio,Turno Sirya,Fascia Libera Comune,Fascia Libera Sintetica
-2025-06-30,Lunedì,N/D,N/D,Non calcolabile,—
-2025-07-01,Martedì,04:22-10:52,05:42-12:18,00:00-04:22; 12:18-23:59,🔥 Pomesera libero!
-2025-07-02,Mercoledì,Riposo,05:42-12:18,00:00-05:42; 12:18-23:59,🔥 Pomesera libero!
-2025-07-03,Giovedì,14:26-23:59,06:00-14:48,00:00-06:00,🌙 Solo notte disponibile
-2025-07-04,Venerdì,N/D,05:22-10:48,Non calcolabile,—
-2025-07-05,Sabato,14:11-20:00,Riposo Weekend,00:00-14:11; 20:00-23:59,🕗 Mattina + 🌇 Sera
-2025-07-06,Domenica,07:15-15:45,Intervallo,00:00-07:15; 15:45-23:59,🔥 Pomesera libero!
 2025-07-07,Lunedì,17:07-22:47,12:44-19:36,00:00-12:44; 22:47-23:59,🕗 Mattina
-2025-07-08,Martedì,Riposo,14:12-22:18,00:00-14:12; 22:18-23:59,🕗 Mattina
+2025-07-08,Martedì,Riposo,13:49-20:53,00:00-13:49; 20:53-23:59,🕗 Mattina + 🌇 Sera
 2025-07-09,Mercoledì,Intervallo,13:12-20:48,00:00-13:12; 20:48-23:59,🕗 Mattina + 🌇 Sera
 2025-07-10,Giovedì,N/D,15:27-23:59,Non calcolabile,—
 2025-07-11,Venerdì,N/D,N/D,Non calcolabile,—
@@ -34,4 +27,10 @@ Data,Giorno,Turno Valerio,Turno Sirya,Fascia Libera Comune,Fascia Libera Sinteti
 2025-08-01,Venerdì,N/D,15:27-22:57,Non calcolabile,—
 2025-08-02,Sabato,Riposo Quantiqualitativo,17:38-23:59,00:00-17:38,⚡ Matteriggio libero!
 2025-08-03,Domenica,N/D,00:00-00:09,Non calcolabile,—
-2025-08-04,Lunedì,Libero,00:00-01:57,01:57-23:59,🌞 Giornata piena disponibile!
+2025-08-04,Lunedì,14:26-23:59,N/D,Non calcolabile,—
+2025-08-05,Martedì,N/D,Riposo,Non calcolabile,—
+2025-08-06,Mercoledì,14:13-23:59,18:45-23:59,00:00-14:13,🕗 Mattina
+2025-08-07,Giovedì,N/D,N/D,Non calcolabile,—
+2025-08-08,Venerdì,00:01-07:00,13:12-20:48,00:00-00:01; 07:00-13:12; 20:48-23:59,🕗 Mattina + 🌇 Sera
+2025-08-09,Sabato,Riposo Quantiqualitativo,14:10-23:36,00:00-14:10; 23:36-23:59,🕗 Mattina
+2025-08-10,Domenica,N/D,Intervallo,Non calcolabile,—
